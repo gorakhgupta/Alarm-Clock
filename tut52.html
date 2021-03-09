@@ -1,0 +1,65 @@
+<!-- Creating an Alarm Clock -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+   
+        <div class="container">
+            <img style="width:50%" src="https://cdn3.vectorstock.com/i/1000x1000/09/52/clock-logo-icon-isolated-watch-object-vector-7910952.jpg" alt="">
+            <h1>Here U can Set the Alarm</h1>
+            <form>
+                <div class="form-group">
+                  <label for="alarm">Setting Alarm(Default song in this Alarm is Bekhyali)</label>
+                  <input type="text" class="form-control" id="alarm" name="alarm" placeholder="Enter the Time to set Alarm in yyyy-mm-dd hh:mm:ss">
+                 
+                </div>
+                <button type="submit" id="alarmSubmit" class="btn btn-primary">Set Alarm</button>
+              </form>
+        </div>
+
+
+   
+    </div>
+   
+    <script>
+
+         var audio = new Audio('https://pagalsong.in/uploads/systemuploads/mp3/Kabir%20Singh/Bekhayali%20-%20Kabir%20Singh%20128%20Kbps.mp3');
+  
+        let alarmSubmit=document.getElementById('alarmSubmit');
+        alarmSubmit.addEventListener('click',setAlarm);
+
+
+        function ringBell()
+        {
+            audio.play();
+        }
+        function setAlarm(e)
+        {  e.preventDefault();
+            console.log('Settig Up Alarm');
+            const alarm=document.getElementById('alarm');
+            alarmDate=new Date(alarm.value);
+            now  = new Date();
+            let timeToAlarm=alarmDate-now;
+            if(timeToAlarm>=0)
+            {
+                setTimeout(() => {
+                    ringBell();
+                }, timeToAlarm);
+            }
+        }
+
+    
+        
+ 
+    </script>
+</body>
+
+</html>
